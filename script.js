@@ -6,6 +6,7 @@ let allTask = document.getElementById("allTasks")
 let completedTask = document.getElementById("completedTasks")
 let pendingTask = document.getElementById("pendingTasks")
 let clearAllButton = document.getElementById("clearAll")
+let standardFilter = "all"
 
 clearAllButton.style.display = "none";
 // Creating a function for the Add task button
@@ -20,6 +21,7 @@ addButton.addEventListener("click", function(){
     clearAllButton.style.display = "block"; //displays clear all button once a task is added
 
     let toDoItem = document.createElement("li");    
+    // toDoItem.classList.add("task", "pending");
     let timestamp = new Date().toLocaleString();
     toDoItem.innerHTML = `<strong>${enterTodo}</strong>  <br> <small> <b>Added on: </b> <br><p> ${timestamp}</p></small>`
  
@@ -35,6 +37,9 @@ addButton.addEventListener("click", function(){
         ToDoHolder.style.backgroundColor = "#96ebbcda" ;
         undo_button.style.display = "block";
         complete_button.style.display = "none";
+        ToDoHolder.classList.remove("pending");
+        ToDoHolder.classList.add("completed");
+        sortTasks();
     })
     
     // adding hover effect to complete button
@@ -78,13 +83,16 @@ addButton.addEventListener("click", function(){
         undo_button.style.display = "none";
         toDoItem.style.textDecoration = "none";
         ToDoHolder.style.backgroundColor = "transparent"
+        ToDoHolder.classList.add("pending");
+        ToDoHolder.classList.remove("completed");   
         sortTasks();
     })
         
     // Creating a div and adding class for the To-do item holder(space)
     let ToDoHolder = document.createElement("div");
     ToDoHolder.classList.add("to-do-holder");
-        
+    ToDoHolder.classList.add("task", "pending");//
+
     // Appending To-do items(Tasks) and other functional buttons to the div created above
     ToDoHolder.appendChild(toDoItem);
     ToDoHolder.appendChild(complete_button);
@@ -92,10 +100,47 @@ addButton.addEventListener("click", function(){
     ToDoHolder.appendChild(delete_button);
 
     MainTodoBox.appendChild(ToDoHolder);
+    // MainTodoBox.appendChild(toDoItem);
 
     to_do.value =""
 })
 
+
+function sortTasks() {
+    let tasks = document.querySelectorAll(".task");
+
+    tasks.forEach(task => {
+        if(standardFilter === "all"){
+            task.style.display = "block";
+        }
+
+        else if (standardFilter === "completed"){
+            task.style.display = task.classList.contains("completed") ? "block": "none";
+
+        }
+
+        else if (standardFilter === "pending"){
+            task.style.display = task.classList.contains("pending") ? "block": "none";
+        }
+    })
+}
+
+allTask.addEventListener("click", function(){
+    standardFilter = "all";
+    sortTasks();
+})
+
+
+completedTask.addEventListener("click", function(){
+    standardFilter = "completed";
+    sortTasks();
+})
+
+
+pendingTask.addEventListener("click", function(){
+    standardFilter = "pending";
+    sortTasks();
+})
 
 function checkTaskLength(){
     if  (MainTodoBox.children.length === 0) {

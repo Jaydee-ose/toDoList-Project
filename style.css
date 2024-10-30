@@ -63,6 +63,22 @@ button{
     /* font-size: 14px; */
 }
 
+
+
+.pending{
+    display: flex;
+    justify-content: space-between;
+    padding: .8rem;
+    border-radius: 5px;
+    /* font-size: 14px; */
+}
+
+.pending button{
+    height: 1.5rem;
+    box-shadow: 0 4px 6px  black;
+
+}
+
 .to-do-holder small{
     font-size: 12px;
 }
