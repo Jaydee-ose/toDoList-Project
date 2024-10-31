@@ -111,16 +111,21 @@ function sortTasks() {
 
     tasks.forEach(task => {
         if(standardFilter === "all"){
-            task.style.display = "block";
+            task.style.display = "flex";
+            // checkTaskLength();
+
         }
 
         else if (standardFilter === "completed"){
-            task.style.display = task.classList.contains("completed") ? "block": "none";
-
+            task.style.display = task.classList.contains("completed") ? "flex": "none";
+            // checkTaskLength();
+            
         }
 
         else if (standardFilter === "pending"){
-            task.style.display = task.classList.contains("pending") ? "block": "none";
+            task.style.display = task.classList.contains("pending") ? "flex": "none";
+            // checkTaskLength();
+
         }
     })
 }
@@ -128,18 +133,31 @@ function sortTasks() {
 allTask.addEventListener("click", function(){
     standardFilter = "all";
     sortTasks();
+    if  (MainTodoBox.children.length === 0) {
+        clearAllButton.style.display = "none";
+    }
+    else {
+        clearAllButton.style.display = "block";
+
+    }
+
 })
 
 
 completedTask.addEventListener("click", function(){
     standardFilter = "completed";
     sortTasks();
-})
 
+    clearAllButton.style.display = "none";
+})
 
 pendingTask.addEventListener("click", function(){
     standardFilter = "pending";
     sortTasks();
+    checkTaskLength();
+    clearAllButton.style.display = "none";
+
+
 })
 
 function checkTaskLength(){

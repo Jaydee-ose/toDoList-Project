@@ -21,6 +21,13 @@ body {
     gap: .5rem;
 }   
 
+
+.display-box h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: unset;
+    font-size: 22px;
+}
+
 .typespace{
     display: flex;
     gap: 1rem;
@@ -42,16 +49,16 @@ button{
     border-radius: 5px;
 }
 
-
 .accessory_btns{
     display: flex;
     gap: 1.5rem;
-
 }
+
 .accessory_btns button {
     height: 1.5rem;
 }
- button:hover{
+
+button:hover{
     background-color: rgb(48, 77, 209);
  }
 
@@ -60,23 +67,6 @@ button{
     justify-content: space-between;
     padding: .8rem;
     border-radius: 5px;
-    /* font-size: 14px; */
-}
-
-
-
-.pending{
-    display: flex;
-    justify-content: space-between;
-    padding: .8rem;
-    border-radius: 5px;
-    /* font-size: 14px; */
-}
-
-.pending button{
-    height: 1.5rem;
-    box-shadow: 0 4px 6px  black;
-
 }
 
 .to-do-holder small{
@@ -86,9 +76,11 @@ button{
 .to-do-holder p{
     font-size: 10px;
 }
+
 .to-do-holder strong{
     font-size: 1.1rem;
 }
+
 .todomain_div{
     width: 100%;
     display: flex;
@@ -96,13 +88,10 @@ button{
     gap: 1rem;
 }
 
-
 .to-do-holder button{
     height: 1.5rem;
     box-shadow: 0 4px 6px  black;
-
 }
-
 
 .clearAll{
     background-color: red;
@@ -114,6 +103,7 @@ button{
     height: 1.5rem;
     box-shadow: 0 4px 6px  black;
 }
+
 .clearAll:hover{ 
     background-color: darkred;
 }
