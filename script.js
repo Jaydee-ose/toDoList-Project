@@ -162,7 +162,7 @@ pendingTask.addEventListener("click", function(){
 })
 
 function checkTaskLength(){
-    if  (MainTodoBox.children.length ===0) {
+    if  (MainTodoBox.children.length < 2) {
         clearAllButton.style.display = "none";
     }
     else {
