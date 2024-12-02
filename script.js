@@ -10,9 +10,11 @@ let standardFilter = "all"
 
 
 clearAllButton.style.display = "none";
+
+
+filterButtonsDisplay();
 // Creating a function for the Add task button
 addButton.addEventListener("click", function(){
-    
     let enterTodo= to_do.value.trim();
     // This condition checks to see if the Enter task/input section of the code is empty
     if (enterTodo === "") {
@@ -160,6 +162,21 @@ pendingTask.addEventListener("click", function(){
     checkTaskLength();
     clearAllButton.style.display = "none";
 })
+
+function filterButtonsDisplay(){
+    if  (MainTodoBox.children.length ===0) {
+        allTask.style.display = "none";
+        completedTask.style.display = "none";
+        pendingTask.style.display = "none";
+
+
+    }
+    else {
+         allTask.style.display = "block";
+        completedTask.style.display = "block";
+        pendingTask.style.display = "block";
+    }
+}
 
 function checkTaskLength(){
     if  (MainTodoBox.children.length < 2) {
