@@ -20,10 +20,11 @@ addButton.addEventListener("click", function(){
     if (enterTodo === "") {
         alert("Task is empty. Add Task!");
         return; }
-
+    filterButtonsDisplay();
+    
     checkTaskLength();
     // clearAllButton.style.display = "block"; //displays clear all button once a task is added
-
+    
     let toDoItem = document.createElement("li");    
     // toDoItem.classList.add("task", "pending");
     let timestamp = new Date().toLocaleString();
@@ -152,7 +153,6 @@ allTask.addEventListener("click", function(){
 completedTask.addEventListener("click", function(){
     standardFilter = "completed";
     sortTasks();
-
     clearAllButton.style.display = "none";
 })
 
