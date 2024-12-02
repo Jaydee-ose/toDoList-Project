@@ -2,11 +2,12 @@
 let addButton = document.getElementById("add_task");
 let to_do = document.getElementById("typebox"); 
 let MainTodoBox = document.getElementById("todomain_div");
-let allTask = document.getElementById("allTasks")
-let completedTask = document.getElementById("completedTasks")
-let pendingTask = document.getElementById("pendingTasks")
-let clearAllButton = document.getElementById("clearAll")
+let allTask = document.getElementById("allTasks");
+let completedTask = document.getElementById("completedTasks");
+let pendingTask = document.getElementById("pendingTasks");
+let clearAllButton = document.getElementById("clearAll");
 let standardFilter = "all"
+
 
 clearAllButton.style.display = "none";
 // Creating a function for the Add task button
@@ -18,7 +19,8 @@ addButton.addEventListener("click", function(){
         alert("Task is empty. Add Task!");
         return; }
 
-    clearAllButton.style.display = "block"; //displays clear all button once a task is added
+    checkTaskLength();
+    // clearAllButton.style.display = "block"; //displays clear all button once a task is added
 
     let toDoItem = document.createElement("li");    
     // toDoItem.classList.add("task", "pending");
@@ -46,6 +48,7 @@ addButton.addEventListener("click", function(){
     complete_button.addEventListener("mouseenter", function(){
         complete_button.style.backgroundColor = "darkgreen"
     })
+
     complete_button.addEventListener("mouseleave", function(){
         complete_button.style.backgroundColor = "green"
     })
@@ -62,7 +65,7 @@ addButton.addEventListener("click", function(){
         complete_button.style.display = "none";
     })
 
-    // adding hover effect to drlete button
+    // adding hover effect to delete button
     delete_button.addEventListener("mouseenter", function(){
         delete_button.style.backgroundColor = "darkred"
     })
@@ -156,12 +159,10 @@ pendingTask.addEventListener("click", function(){
     sortTasks();
     checkTaskLength();
     clearAllButton.style.display = "none";
-
-
 })
 
 function checkTaskLength(){
-    if  (MainTodoBox.children.length === 0) {
+    if  (MainTodoBox.children.length ===0) {
         clearAllButton.style.display = "none";
     }
     else {
@@ -172,6 +173,7 @@ function checkTaskLength(){
 clearAllButton.addEventListener("click", function(){
     let confirmDelete = confirm("Delete All? This cannot be undone");
     if (confirmDelete){
+        
         MainTodoBox.innerHTML = "";
         checkTaskLength();
 
